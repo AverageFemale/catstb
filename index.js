@@ -40,12 +40,13 @@ async function main() {
         let queueIndex = null
         queue.forEach((v,i) => {if (v.user == user.userName) {isInQueue = true; queueIndex = i}})
         if (!args[0]) return chatClient.say(channel,`@${user.userName}, you need to input your username to enter the queue.`)
+        if (args[0].length > 20) return chatClient.say(channel, `@${user.userName}, this name is over the 20 character limit.`) 
         if (isInQueue) {
           queue[queueIndex].username = args[0].toLowerCase()
           return chatClient.say(channel,`@${user.userName}, changed your queued username to: ${args[0]}.`)
         }
         if (whoEnteredToday.includes(user.userName)) return chatClient.say(channel, `@${user.userName}, you've already been donated to today.`)
-        if (args[0].length > 20) return chatClient.say(channel, `@${user.userName}, this name is over the 20 character limit.`) 
+        
   			chatClient.say(channel,`@${user.userName}, you've been added to the queue.`)
         queue.push({user: user.userName, username: args[0].toLowerCase()})
         whoEnteredToday.push(user.userName)
@@ -77,6 +78,11 @@ async function main() {
       break;
       case "cmds":
         chatClient.say(channel,`@${user.userName} | !dono <username> - Enters you into the queue. | !next - Presents the next set of people in the queue. | !current - Presents the current people that are being donated to. | Created by @AverageFemale_`)
+      break;
+      case "reset":
+        if (user.userName.toLowerCase() !== "averagefemale_") return;
+        whoEnteredToday.splice(0,whoEnteredToday.length)
+        chatClient.say(channel,`@${user.userName}, reset the cache.`)
       break;
     }
     
