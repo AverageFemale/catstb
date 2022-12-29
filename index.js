@@ -2,6 +2,8 @@ import { StaticAuthProvider } from '@twurple/auth';
 import { ChatClient } from '@twurple/chat';
 import { ApiClient } from '@twurple/api'
 import { EventSubWsListener } from '@twurple/eventsub-ws'
+import * as dotenv from 'dotenv'
+dotenv.config()
 //import { promises as fs } from 'fs';
 
 async function main() {
