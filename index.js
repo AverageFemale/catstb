@@ -47,7 +47,7 @@ async function main() {
         var data = shortcuts.get(args[0])
         if (data.actions.length == 0) return 
         data.actions.forEach((v,i) => {
-          setTimeout(() => {chatClient.say(channel,v)},(500 * i))
+          chatClient.say(channel,v)
         })
       break;
       case "addaction":
