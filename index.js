@@ -30,6 +30,15 @@ async function main() {
     const args = text.split(" ").slice(1)
     if (args.length > 0) args[0] = args[0].toLowerCase() 
 		switch(command) {
+      case "eval":
+        const random = Math.random()
+        try {
+          const results = eval(args.join(" "))
+          console.log(`Success! ${random > 0.1 ? "Kappa" : "KappaPride"}`)
+        } catch (e) {
+          console.error(e)
+        }
+      break;
       case "execute":
         //chatClient.say(channel,`${user.displayName}, success message.`)
         if (!args[0] || !shortcuts.has(args[0])) return
