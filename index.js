@@ -28,7 +28,6 @@ async function main() {
     user = msg.userInfo
     const command = text.split(prefix)[1].split(" ").shift()
     const args = text.split(" ").slice(1)
-    if (args.length > 0) args[0] = args[0].toLowerCase() 
 		switch(command) {
       case "eval":
         const random = Math.random()
@@ -42,6 +41,7 @@ async function main() {
         }
       break;
       case "execute":
+        if (args.length > 0) args[0] = args[0].toLowerCase() 
         //chatClient.say(channel,`${user.displayName}, success message.`)
         if (!args[0] || !shortcuts.has(args[0])) return
         var data = shortcuts.get(args[0])
@@ -51,6 +51,7 @@ async function main() {
         })
       break;
       case "addaction":
+        if (args.length > 0) args[0] = args[0].toLowerCase() 
         if (!shortcuts.get(args[0])) shortcuts.set(args[0],{actions: []})
         data = shortcuts.get(args[0])
         let done = false
@@ -73,6 +74,7 @@ async function main() {
         
       break;
       case "deleteshortcut":
+        if (args.length > 0) args[0] = args[0].toLowerCase() 
         if (!shortcuts.get(args[0])) return chatClient.say(channel,`${user.displayName}, ${args[0]} is not a shortcut.`)
         shortcuts.delete(args[0])
         chatClient.say(channel,`${user.displayName}, ${args[0]} was deleted.`)
