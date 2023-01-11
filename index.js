@@ -17,8 +17,8 @@ async function main() {
   const apiClient = new ApiClient({authProvider})
   chatClient.onConnect(() => {console.log(`Connected to: ${channels.join(", ")}.`)})
 
-  shortcuts.set("synth", {actions: ["!rainbow","!minimize","!speed","!vanish","!warp"]})
-  shortcuts.set("synthss", {actions: ["!rainbow","!minimize","!superspeed","!vanish","!warp"]})
+  shortcuts.set("averagecombo", {actions: ["!rainbow","!minimize","!speed","!vanish","!warp"]})
+  shortcuts.set("averagecomboss", {actions: ["!rainbow","!minimize","!superspeed","!vanish","!warp"]})
   
 	chatClient.onMessage(async (channel, user, text, msg) => {
     if (user.toLowerCase() != "averagefemale_") return
@@ -28,6 +28,7 @@ async function main() {
     user = msg.userInfo
     const command = text.split(prefix)[1].split(" ").shift()
     const args = text.split(" ").slice(1)
+    if (args.length > 0) args[0] = args[0].toLowerCase() 
 		switch(command) {
       case "execute":
         //chatClient.say(channel,`${user.displayName}, success message.`)
