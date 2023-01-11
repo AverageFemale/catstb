@@ -34,9 +34,11 @@ async function main() {
         const random = Math.random()
         try {
           const results = eval(args.join(" "))
-          console.log(`Success! ${random > 0.1 ? "Kappa" : "KappaPride"}`)
+          console.log(results)
+          chatClient.say(channel,`Success! ${random > 0.1 ? "Kappa" : "KappaPride"}`)
         } catch (e) {
           console.error(e)
+          chatClient.say(channel,`Error! ${random > 0.1 ? "FallCry" : "WutFace"}`)
         }
       break;
       case "execute":
