@@ -19,6 +19,7 @@ async function main() {
 
   shortcuts.set("averagecombo", {actions: ["!rainbow","!minimize","!speed","!vanish","!warp"]})
   shortcuts.set("averagecomboss", {actions: ["!rainbow","!minimize","!superspeed","!vanish","!warp"]})
+  shortcuts.set("shitface", {actions: ["!aremoji","!artrigger","Cats","!artrigger","has a","!artrigger","shit face.","!artrigger"]})
   
 	chatClient.onMessage(async (channel, user, text, msg) => {
     if (user.toLowerCase() != "averagefemale_") return
@@ -29,6 +30,9 @@ async function main() {
     const command = text.split(prefix)[1].split(" ").shift()
     const args = text.split(" ").slice(1)
 		switch(command) {
+      case "stop":
+        
+      break;
       case "eval":
         const random = Math.random()
         try {
@@ -49,6 +53,7 @@ async function main() {
         data.actions.forEach((v,i) => {
           chatClient.say(channel,v)
         })
+        
       break;
       case "addaction":
         if (args.length > 0) args[0] = args[0].toLowerCase() 
